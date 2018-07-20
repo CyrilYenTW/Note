@@ -1,0 +1,35 @@
+
+# 創建 ssh key, 注意的是如果你是 windows 要把創建出來的丟到 ~/.ssh 下
+ssh-keygen -t rsa -C "UserName"
+
+# 請你輸入 key 的名稱
+Enter file in which to save the key (/c/Users/cyril_yen/.ssh/id_rsa): id_rsa_UserName
+
+# 將 ssh key 加入倒 SSH agent中
+ssh-add ~/.ssh/id_rsa_UserName
+
+# 如果出現 Could not open a connection to your authentication agent 試著下
+ssh-agent bash
+ssh-agent ~/.ssh/id_rsa_UserName
+
+# 修改 config 檔, 沒有則自己建(~/.ssh/)
+touch config
+
+# config 檔內容
+Host UserName
+   HostName github.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_UserName
+   
+# 去平台添加你的 pub key
+把 id_rsa_UserName.pub 內容複製貼上平台
+
+# 測試
+ssh -T UserName
+
+# 成功則顯示 Hi UserName! You've successfully authenticated, but GitHub does not provide shell access.
+
+# 使用Git
+注意!! 使用git的時候, 選擇 SSH, 然後把網址改成 
+從		git@github.com:UserName/RepoName.git
+改成	git@UserName:UserName/RepoName.git
