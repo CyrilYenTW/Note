@@ -1,0 +1,59 @@
+請解釋asp.net mvc中的Message Handler
+
+	Request
+		Network -> HttpServer -> MessageHandler(Custom) -> HttpRoutingDispatcher -> HttpControllerDispatcher -> Controller
+
+	Response
+		Controller -> HttpControllerDispatcher -> HttpRoutingDispatcher -> MessageHandler(Custom) -> HttpServer -> Network
+
+	Add from WebApiConfig
+
+
+請解釋asp.net mvc中的Action Filter
+
+	四種
+		OnActionExecuted
+		OnActionExecuting
+		OnResultExecuted
+		OnResultExexuting
+
+	都會傳入Context的變數, 可以針對當前 Request 做紀錄 過濾 取得 Request 資料
+
+
+請解釋Http get與 Post的差異
+
+	get 透過 url 傳遞 parameter, 故有長度限制
+	post 透過 http context 傳遞 parameter, 故無長度限制
+
+請解釋資料庫中right,left,inner join有何不同
+
+	right, left 以主表資料為主, 若 join 的表無該 key 值則result 顯示 null
+	inner join result 無資料時不顯示該資料
+
+請解釋資料庫中的正規畫與反正規劃
+
+	正規化
+		將一系列有關聯的表去除掉重複的資訊
+
+	反正規化
+		將原本已正規劃之一系列關聯之表因某些因素加入重複之欄位
+
+請解釋值型別(value type)和參考型別(reference type)有何不同
+
+	Value Type
+		儲存內容為實值(stuct、int、double、char)
+
+	Reference Type
+		儲存內容為記憶體位址(class)
+
+請解釋何為泛型(generic type)
+
+	是一種謹代表 類型參數 的類型, 泛型的參數只能代表類別 無法代表個別物件
+
+請解釋何為thread-safe
+
+	在程式使用多執行緒時, 應該避免功用變數或是操作全域變數, 讓每個執行緒的相依性降到最低, 以防不在預期中的結果產出
+
+前端使用bundle的用意為
+	
+	增加網頁瀏覽順暢, bundle 可以將頁面需要使用的js、css檔打包壓縮 減少傳輸流量
